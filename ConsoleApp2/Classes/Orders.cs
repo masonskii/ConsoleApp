@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace ConsoleApp2
 {
@@ -15,11 +13,18 @@ namespace ConsoleApp2
         public bool IsCoffeOrTea { get; set; }
         public Orders()
         {
-            CupOfCoffe coffe = new CupOfCoffe();
+            CupOfCoffe cupOfCoffe = new CupOfCoffe();
             Random r = new Random();
-            CupOfTea tea = new CupOfTea();
+            CupOfTea cupOfTea = new CupOfTea();
             Console.WriteLine("Мы внимательно записываем!");;
-            Order(coffe, tea, r);
+            if (!Order(cupOfCoffe, cupOfTea, r)) End();
+        }
+        private void End()
+        {
+            var allCost = new CostOrders();
+            Console.ForegroundColor = ConsoleColor.Blue;
+            Console.WriteLine($"Общая стоимость заказа составляет = {allCost.TotalCost()}.99 руб.");
+            Console.ResetColor();
         }
         private bool isWash()
         {
